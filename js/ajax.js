@@ -1,4 +1,4 @@
-export default function getData(url : string , cb: any ) {
+export default function getData(url , cb ) {
     let xhr = new XMLHttpRequest();
     xhr.open('GET', url);
     xhr.responseType = 'json';
