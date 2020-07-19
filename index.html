@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.0/sketchy/bootstrap.min.css"> 
     <title>API Project</title>
+    <h1>Cryptonite</h1>
     <style>
       .container{
     width: 60vw;
@@ -18,22 +19,30 @@
     justify-content: center;
 
       }
-      .div_style{
+        .div_style{
 
-border: 1px solid black;
-width: 32.5%;
-height: 37.5%;
-background-color: blanchedalmond;
-text-align: center;
-}
+            border: 1px solid black;
+    width: 32.5%;
+    height: 60.0%;
+    background-color: blanchedalmond;
+    text-align: center;
+        }
+        
+        .more_info{
+            display: flex;
+            flex-direction: column;
+        }
+        .any {
+          transition: opacity 3s;
+        }
+        .progressBar{
+         color:coral
+        }
+        .bar{
+          font-size: 300px;
+          display: flex;
+        }
 
-.more_info{
-display: flex;
-flex-direction: column;
-}
-.any {
-transition: opacity 3s;
-}
     </style>
 </head>
 <body>
@@ -63,8 +72,10 @@ transition: opacity 3s;
         </div>
       </nav>
     
+      <div class="bar">
+      </div>
       <div class="container">
       </div>
-      <script src="./js/app.js" type="module"></script>
+      <script type="module" src="./js/app.js" ></script>
 </body>
 </html>
