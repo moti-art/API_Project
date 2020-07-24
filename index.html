@@ -7,41 +7,65 @@
     <title>API Project</title>
     <h1>Cryptonite</h1>
     <style>
-      .container{
-    width: 60vw;
+      #container{
+        width: 65%;
+    margin: 0 auto;
     display: flex;
     flex-wrap: wrap;
-    margin-top: 88px;
-    height: 60vh;
-    margin-left: auto;
-    margin-right: auto;
-    overflow: auto;
-    justify-content: center;
-
+    flex: 2;
+    margin-top: 2px;
       }
-        .div_style{
+   .items{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    box-sizing: border-box;
+    justify-content:center;
+   }
 
-            border: 1px solid black;
-    width: 32.5%;
-    height: 60.0%;
-    background-color: blanchedalmond;
-    text-align: center;
-        }
-        
-        .more_info{
-            display: flex;
-            flex-direction: column;
-        }
-        .any {
-          transition: opacity 3s;
-        }
-        .progressBar{
-         color:coral
-        }
-        .bar{
-          font-size: 300px;
-          display: flex;
-        }
+   .card-text {
+    margin-left: 1.3rem;
+    font-size: 1.5rem;
+}
+.card-header {
+    font-size: 1.8em
+}
+
+.card {
+    flex: 0 1 300px;
+    height: 280px;
+}
+
+.custom-control {
+    display: flex !important;
+    justify-content: space-between !important;
+    padding:0 !important;
+    transition:height 3s;
+}
+
+.more-info {
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    height: 0;
+    transition: visibility 2s, opacity 2s, height 2s linear;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.check {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.collapsible {
+    width: 150%
+}
 
     </style>
 </head>
@@ -56,13 +80,13 @@
         <div class="collapse navbar-collapse" id="navbarColor03">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" id = "home" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Live Reports</a>
+              <a class="nav-link" id = "liveReports" href="#">Live Reports</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" id = "about" href="#">About</a>
             </li>
           </ul>
           <form class="form-inline my-2 my-lg-0">
@@ -72,8 +96,7 @@
         </div>
       </nav>
     
-      <div class="bar">
-      </div>
+  
       <div class="container">
       </div>
       <script type="module" src="./js/app.js" ></script>

@@ -1,32 +1,73 @@
 const container = document.querySelector(".container");
 
-export function create100coins(arr) {
-    arr.forEach((element) => {
-        let newdiv = document.createElement('div');
-        newdiv.setAttribute('class', 'div_style');
-        container.appendChild(newdiv);
-        newdiv.innerHTML =
-          `<div class = "more_info">
-          <span>${element.name} </span>
-          <div class = "progressBar"></div>
-          <button id = ${element.id} >more INFO </button>
-          <div class=any ></div> 
-          <div class="custom-control custom-switch">
-            <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
-            <label class="custom-control-label" for="customSwitch1"></label>
-          </div>
-          </div>`;
-    });
+export function create100coins(value) {
+    
+  const div = document.createElement('div');
+  // Symbol To Upper Case 
+  let symbols = value.map((val) => val.symbol);
+  symbols = symbols.map((x) => x.toUpperCase());
+  div.setAttribute('class', 'items');
+  let html = value.map(function ({ id, name }, index) {
+      return (`<div class="card border-secondary m-3">
+                  <div class="card-header">${symbols[index]}</div> 
+                  <p class="card-text">Name : ${name} </p>
+                  <div class="custom-control custom-switch">
+                       <a class="btn btn-primary btn-lg collapsible" href="#" role="button" id="${id}" title="Learn More">Learn more</a>
+                       <div class="more-info" id="${symbols[index]}"></div>
+                       <div class="check">
+                       <input type="checkbox" data-coin=${symbols[index]} class="custom-control-input" id="customSwitch${index}" unchecked="">
+                      <label class="custom-control-label" for="customSwitch${index}"></label>
+                       </div>
+                      
+                  </div>
+                  
+              </div>`);
+  }).join('');
+  div.innerHTML = html;
+  container.append(div);
 }
 export function more_info() {
-    let coin_data = this.response;
-    let more_info_div = document.getElementById(coin_data.id);
-    const info = `<tr>
-                      <td><img src =   ${coin_data.image.small} width = 50px></td><br>
-                      <td>USD Value :  ${coin_data.market_data.current_price.usd}&#36;</td><br>
-                      <td>EUR Value :  ${coin_data.market_data.current_price.eur}&#8364</td><br>
-                      <td>ILS Value :  ${coin_data.market_data.current_price.ils}&#8362; </td><br>
-                      </tr>`;
-    more_info_div.nextElementSibling.innerHTML = info;
-    return this.status
+  const data = this.response;
+  let id = this.response.symbol.toUpperCase()
+  const usd = data.market_data.current_price.usd + '<strong>$</strong>'
+  const eur = data.market_data.current_price.eur + '<strong>€</strong>'
+  const ils = data.market_data.current_price.eur + '<strong>₪</strong>'
+  const image = data.image.small
+  let div = document.getElementById(id)
+  div.innerHTML = `<div>
+                    <p><strong>USD</strong> : ${usd} <br>
+                      <strong>EUR</strong> : ${eur} <br>
+                      <strong>ILS</strong> : ${ils} </p>
+                  </div> 
+                  <div>
+                  <img src="${image}" style="border-radius: 25px;" >
+                  </div>
+                  `
 }
+
+
+export function check_each_info() {
+
+
+    var coll = document.querySelectorAll(".collapsible");
+    var i;
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.visibility === "visible") {
+                content.style.visibility = "hidden";
+                content.style.opacity = "0";
+                content.style.height = '0'
+                
+            } else {
+                content.style.visibility = "visible";
+                content.style.opacity = "1";
+                content.style.height = '79px'
+            }
+        });
+    }
+}
+
+
+
