@@ -6,11 +6,13 @@ export default function getHttp(url , cb ) {
     xhr.open('GET', url);
         if (event.target.textContent === "Learn more") {
             let Card = event.target.parentNode.parentNode;
+
             progress.style.top = "60%"
             progress.style.right = "100px"
             progress.style.width = "150px"
             progress.style.height = "50px"
             Card.appendChild(progress)
+
         } else {
             progress.style.position = "absolute"
             progress.style.top = "50%"

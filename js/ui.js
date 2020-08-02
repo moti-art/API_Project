@@ -45,6 +45,15 @@ export function more_info() {
                   `
 }
 
+export function buildGragh(link){
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', link);
+    xhr.onload = function () {
+        container.innerHTML = xhr.response;
+      };
+      xhr.send();
+}
+
 
 export function check_each_info() {
 

@@ -3,6 +3,8 @@ import { more_info, create100coins , check_each_info } from "./ui.js"
 
 
 
+
+
 const main_div = document.querySelector('.container')
 
  
@@ -33,36 +35,10 @@ export default function load_first_page(){
                 }
             }
         });
-      
+
         }
+     
 
-  
 
-         
-
-    //         let id_coin = event.target.id;
-           
-    //         if (event.target.nextElementSibling.style.display === "" || event.target.nextElementSibling.style.opacity === '0') {
-    //             let link = "https://api.coingecko.com/api/v3/coins/" + (id_coin);
-    //             getHttp(link,more_info)
-
-    //             let x  = 1 ;  
-    //             let b = setInterval(() => {x+=1 ;
-    //                  event.target.previousElementSibling.textContent=x + '%';
-    //                  if(event.target.nextElementSibling.textContent !== ""){
-    //                 clearInterval(b)
-    //             }},10);
-            
-    //             event.target.nextElementSibling.style.opacity = '1';
-    //             event.target.nextElementSibling.style.display = 'block';
-               
-                              
-    //         }
-    //         else {
-    //             event.target.nextElementSibling.style.opacity = '0';
-    //             event.target.nextElementSibling.style.display = 'none';
-    //             event.target.previousElementSibling.textContent = ""
-    //         }
-    //     });  
 
     

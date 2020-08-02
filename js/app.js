@@ -1,43 +1,64 @@
-import getHttp from "./ajax.js"
-import load_first_page from "./firstload.js"
-import progressBar from "./progreesbar.js"
+import getHttp from "./ajax.js";
+import load_first_page from "./firstload.js";
+import { buildGragh} from "./ui.js"
+// import { createCanvasElement , makeGraph } from './graph.js';
 
-window.onload = function(){
-    getHttp("https://api.coingecko.com/api/v3/coins/list" , load_first_page)
+window.onload = function () {
+  getHttp("https://api.coingecko.com/api/v3/coins/list", load_first_page);
+};
+
+document.querySelector("#home").addEventListener("click", home);
+function home() {
+  document.querySelector(".container").innerHTML = "";
+  getHttp("https://api.coingecko.com/api/v3/coins/list", load_first_page);
 }
 
+document.querySelector("#liveReports").addEventListener("click", () => {
 
-document.querySelector('#home').addEventListener('click', ()=>{
-    document.querySelector('.container').innerHTML="";
-    progressBar();
-    getHttp("https://api.coingecko.com/api/v3/coins/list" , load_first_page );
-})
+  let coins=""
+  let counter =  0 ; 
+  let arr = [];
+  for (var i = 0; i < 100; i++) {
+    let tgl = document.getElementById("customSwitch" + i);
 
-document.querySelector('#liveReports').addEventListener('click', ()=>{
-    console.log('2')
-})
-
-document.querySelector('#about').addEventListener('click', ()=>{
-
-    loadContent('./components/about/about.component.html', document.querySelector('.container'))
-    loadScript('./components/about/about.component.js')
- 
-})
-
-function loadContent(url, outlet) {
-    if (outlet) {
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', url)
-        xhr.onload = function () {
-            outlet.innerHTML = xhr.responseText;
-        }
-        xhr.send()
-        return xhr;
+    if (tgl.checked) {
+      arr[counter] = tgl.dataset.coin;
+      counter++
+      coins +=tgl.dataset.coin+"," ;
+     
     }
-}
+    if(counter>5){
+    alert("wrong choice - more than 5 toggels !")
+    break
+  }
+  }
+  coins = coins.substring(0, coins.length - 1);
+  let link = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${coins}&tsyms=USD`
+  if(counter<=5){
+    buildGragh(link);
+  }
+ 
+});
 
-function loadScript(url) {
-    var scriptTag = document.createElement('script');
-    scriptTag.src = url;
-    document.body.insertAdjacentElement('beforeend', scriptTag)
-}
+document.querySelector("#about").addEventListener("click", () => {
+  document.querySelector(".container").innerHTML = `<a href = "https://moti-art.github.io/motiCV/">click here to get more INFO about me</a>`
+ 
+});
+
+// function loadContent(url, outlet) {
+//   if (outlet) {
+//     const xhr = new XMLHttpRequest();
+//     xhr.open("GET", url);
+//     xhr.onload = function () {
+//       outlet.innerHTML = xhr.responseText;
+//     };
+//     xhr.send();
+//     return xhr;
+//   }
+// }
+
+// function loadScript(url) {
+//   var scriptTag = document.createElement("script");
+//   scriptTag.src = url;
+//   document.body.insertAdjacentElement("beforeend", scriptTag);
+// }
