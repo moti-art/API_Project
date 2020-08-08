@@ -68,6 +68,17 @@
     width: 150%
 }
 
+#aboutme{
+  font-size: 50px;
+  text-decoration-line: overline underline;
+  text-decoration-style: wavy;
+  color:lime;
+  text-align: center;
+
+}
+
+
+
     </style>
 </head>
 <body>
@@ -100,6 +111,29 @@
   
       <div class="container">
       </div>
-      <script type="module" src="./js/app.js" ></script>
+
+<!-- modal  -->
+<div class="modal fade" id="mymodal">
+  <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5>Sorry...You are allowed to track 5 coins Max.
+              Please Remove One Of the Following in order to Track your 6th choice.</h5>
+          </div>
+          <div class="modal-body">
+              
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" id="SaveChanges">Save Changes</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="CloseBtn">Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+ <!-- end of modal  -->
+
+  <script type="module" src="./js/app.js" ></script> 
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>

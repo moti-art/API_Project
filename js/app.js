@@ -28,8 +28,9 @@ document.querySelector("#liveReports").addEventListener("click", () => {
      
     }
     if(counter>5){
-    alert("wrong choice - more than 5 toggels !")
-    break
+    // alert("wrong choice - more than 5 toggels !")
+    $("#mymodal").modal();
+    // break
   }
   }
   coins = coins.substring(0, coins.length - 1);
@@ -40,25 +41,8 @@ document.querySelector("#liveReports").addEventListener("click", () => {
  
 });
 
-document.querySelector("#about").addEventListener("click", () => {
-  document.querySelector(".container").innerHTML = `<a href = "https://moti-art.github.io/motiCV/">click here to get more INFO about me</a>`
- 
+  document.querySelector("#about").addEventListener("click", () => {
+  document.querySelector(".container").innerHTML = `<a href = "https://moti-art.github.io/motiCV/" id = "aboutme" >click here to get more INFO about me</a>`
+
 });
 
-// function loadContent(url, outlet) {
-//   if (outlet) {
-//     const xhr = new XMLHttpRequest();
-//     xhr.open("GET", url);
-//     xhr.onload = function () {
-//       outlet.innerHTML = xhr.responseText;
-//     };
-//     xhr.send();
-//     return xhr;
-//   }
-// }
-
-// function loadScript(url) {
-//   var scriptTag = document.createElement("script");
-//   scriptTag.src = url;
-//   document.body.insertAdjacentElement("beforeend", scriptTag);
-// }
