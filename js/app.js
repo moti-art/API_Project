@@ -1,7 +1,7 @@
 import getHttp from "./ajax.js";
 import load_first_page from "./firstload.js";
-import { buildGragh} from "./ui.js"
-// import { createCanvasElement , makeGraph } from './graph.js';
+import { buildGragh , displaymodal} from "./graph.js"
+
 
 window.onload = function () {
   getHttp("https://api.coingecko.com/api/v3/coins/list", load_first_page);
@@ -28,15 +28,15 @@ document.querySelector("#liveReports").addEventListener("click", () => {
      
     }
     if(counter>5){
-    // alert("wrong choice - more than 5 toggels !")
-    $("#mymodal").modal();
-    // break
+      displaymodal(arr)
+
   }
   }
   coins = coins.substring(0, coins.length - 1);
   let link = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${coins}&tsyms=USD`
   if(counter<=5){
     buildGragh(link);
+ 
   }
  
 });

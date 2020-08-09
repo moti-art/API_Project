@@ -1,13 +1,7 @@
 import getHttp from "./ajax.js"
 import { more_info, create100coins , check_each_info } from "./ui.js"
 
-
-
-
-
 const main_div = document.querySelector('.container')
-
- 
 
 export default function load_first_page(){
    
